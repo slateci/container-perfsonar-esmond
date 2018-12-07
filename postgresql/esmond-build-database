@@ -1,0 +1,22 @@
+#!/bin/sh -e
+#
+# Build the esmond Database
+#
+
+# Start the server
+su - postgres -c "/usr/pgsql-9.5/bin/pg_ctl start -w -t 60"
+echo "Server started"
+
+DB_PASSWORD=$(< /dev/urandom tr -dc _A-Za-z0-9 | head -c32;echo;)
+su -l postgres -c "psql -c \"CREATE USER esmond WITH PASSWORD '${DB_PASSWORD}'\"" &> /dev/null
+su -l postgres -c "psql -c \"CREATE DATABASE esmond\"" &> /dev/null
+su -l postgres -c "psql -c \"GRANT ALL ON DATABASE esmond to esmond\"" &> /dev/null
+sed -i "s/sql_db_name = .*/sql_db_name = esmond/g" /etc/esmond/esmond.conf
+sed -i "s/sql_db_user = .*/sql_db_user = esmond/g" /etc/esmond/esmond.conf
+sed -i "s/sql_db_password = .*/sql_db_password = ${DB_PASSWORD}/g" /etc/esmond/esmond.conf
+
+# Shut down
+su - postgres -c "/usr/pgsql-9.5/bin/pg_ctl stop  -w -t 60"
+echo "Server stopped"
+
+exit 0
