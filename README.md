@@ -24,6 +24,7 @@ NOTE: testing has been done mostly on gcloud(google cloud)'s VMs using "Containe
 #### 2. Set up Esmond
 Make sure the port 80 is open (i.e. run sudo iptables -w -A INPUT -p tcp --dport 80 -j ACCEPT)
 > docker pull koeul/esmond_test
+
 > docker run --privileged -d -P --net=host -v "/var/run" koeul/esmond_test
 
 #### 3. Grab the api key
