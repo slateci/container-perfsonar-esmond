@@ -11,12 +11,11 @@ The latest image can be found at:
 
 Tag the image and then push to the docker repository of your choice.
 
-NOTE: There are errors that show up when building the image. Ignore for now: the same error messages show up during the manual installation of perfsonar/esmond bundle and perfsonar-testpoint-docker.
+NOTE: Some errors show up during the building stage. Ignore them for now: the same error messages show up during the manual installation of the perfsonar/esmond bundle and perfsonar-testpoint-docker.
 
 
 ### Testing
-NOTE: testing has been done mostly on gcloud(google cloud)'s VMs using "Container-Optimized OS" v70 stable. instance:
-
+NOTE: testing has been done on gcloud(google cloud)'s VMs using "Container-Optimized OS" v70 stable.
 
 #### 1. Set up a perfsonar-testpoint docker container
 > https://github.com/perfsonar/perfsonar-testpoint-docker
@@ -29,12 +28,14 @@ Make sure the port 80 is open (i.e. run sudo iptables -w -A INPUT -p tcp --dport
 
 #### 3. Grab the api key
 > docker exec -it <esmond_test_container_id> bash
+
 > cat /tmp/esmondkey
 
-NOTE: this is obviously a temporary fix. Esmond can authenticate using the IPs of the requesting perfsonar hosts.
+NOTE: this is a temporary fix. Esmond can authenticate using the IPs of the requesting perfsonar hosts without api keys.
 
 #### 4. Send a test result to the Esmond host from the Perfsonar-testpoint host
 > docker exec -it <perfsonar-testpoint_container_id> bash
+
 > pscheduler task --archive '{"archiver" : "esmond","data" : {"url" : "http://<esmond_host_ip>/esmond/perfsonar/archive/","measurement-agent" : "<measurement_agent_ip>","_auth-token" : "<api_key>"}}' trace --dest <destination_host>
 
 More on pscheduler commands:
