@@ -10,9 +10,9 @@ RUN yum -y update; yum clean all
 RUN yum -y install esmond
 RUN yum -y install esmond-database-postgresql95
 
-## I am not sure how much of these are needed..
+# TODO: remove unnecessary tools. These were intended for testpoint-docker. I kept them because I didn't know what was needed for esmond
+#       (supervisor is obviously necessary)
 RUN yum -y install supervisor rsyslog net-tools sysstat bind-utils tcpdump
-# grab a few other needed tools
 
 # -----------------------------------------------------------------------
 
