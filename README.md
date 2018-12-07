@@ -43,7 +43,7 @@ http://docs.perfsonar.net/pscheduler_client_tasks.html
 http://docs.perfsonar.net/pscheduler_client_tasks.html#archiving-tasks
 
 
-### Known issue
+### Known issues
 Esmond is not accepting the test results for some reason.
 > {"archived": false, "completed": true, "diags": [{"return-code": 0, "time": "2018-12-07T01:56:14Z", "stderr": "Archiver permanently abandoned registering test after 1 attempt(s): 500: Invalid JSON returned" ...
 
