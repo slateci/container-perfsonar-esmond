@@ -44,7 +44,7 @@ http://docs.perfsonar.net/pscheduler_client_tasks.html#archiving-tasks
 
 
 ### Known issues
-Esmond is not accepting the test results for some reason.
+Esmond is not "fully" accepting the test results for some reason. By not "fully", I mean something is being archived. I am guessing esmond is still logging and acknowledging archive requests. On the client-side (test measurement hosts), the following error pops up. 
 > {"archived": false, "completed": true, "diags": [{"return-code": 0, "time": "2018-12-07T01:56:14Z", "stderr": "Archiver permanently abandoned registering test after 1 attempt(s): 500: Invalid JSON returned" ...
 
 Refer to:
