@@ -2,7 +2,7 @@
 esmond-docker is based on https://github.com/perfsonar/perfsonar-testpoint-docker so read it carefully. Much of what is there applies to esmond-docker as well.
 
 The latest image can be found at:
-> https://hub.docker.com/r/koeul/esmond_test/
+> https://hub.docker.com/r/slateci/perfsonar-esmond/
 
 ## Usage Guide
 
@@ -22,7 +22,7 @@ NOTE: testing has been done on gcloud(google cloud)'s VMs using "Container-Optim
 
 #### 2. Set up Esmond
 Make sure the port 80 is open (i.e. run sudo iptables -w -A INPUT -p tcp --dport 80 -j ACCEPT)
-> docker pull koeul/esmond_test
+> docker pull slateci/perfsonar-esmond
 
 > docker run --privileged -d -P --net=host -v "/var/run" koeul/esmond_test
 
