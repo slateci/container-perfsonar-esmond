@@ -56,7 +56,7 @@ Refer to:
 - [x] perfSONAR-testpoint (in green) is available from the official perfSONAR repository.
 - [x] esmond has been Dockerized (in blue).
 - [ ] Various tools that power toolkit UI need to be containerized! (in gray)
-- [ ] An orchestration of the containers with Kubernetes/Helm and exposing/pre-configuration appropriate setups through SLATE interface
+- [ ] An orchestration of the containers with Kubernetes/Helm and allow easier configurations through SLATE interface
 
 ## Some comments on perfSONAR
 
